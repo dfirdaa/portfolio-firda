@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Firda Amalia</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+    <div class="logo" id="admin-secret" data-login-url="{{ url_for('login') }}">
+        Firda Portfolio
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HOME -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <p class="welcome">
+            Welcome To My Portfolio
+        </p>
+
+        <h1>
+            Halo, Saya Firda Amalia
+        </h1>
+
+        <p class="desc">
+            Mahasiswa Universitas Kristen Satya Wacana <br>
+            Fakultas Teknologi Informasi <br>
+            Program Studi Sistem Informasi
+        </p>
+
+        <a href="#about" class="btn">
+            Lihat Profil
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+
+    <h2>ABOUT ME</h2>
+
+    <div class="about-container">
+
+        <div class="about-photo">
+
+            {% if profil and profil.foto %}
+
+                {% if profil.foto[:4] == 'http' %}
+
+                    <img src="{{ profil.foto }}" alt="Foto Profil">
+
+                {% else %}
+
+                    <img src="{{ url_for('static', filename=profil.foto) }}"
+                        alt="Foto Profil">
+
+                {% endif %}
+
+            {% else %}
+
+                <img src="{{ url_for('static', filename='profil.jpeg') }}"
+                    alt="Foto Profil">
+
+            {% endif %}
+
+            <h3 class="photo-name">
+                {{ profil.nama_lengkap if profil else 'Dewi Firda Amalia' }}
+            </h3>
+
+            <p class="photo-role">
+                Mahasiswa Sistem Informasi
+            </p>
+
+        </div>
+
+        <div class="about-info">
+
+            <p>
+                Saya adalah mahasiswa Program Studi Sistem Informasi
+                Universitas Kristen Satya Wacana yang memiliki minat
+                pada bidang Web Development, Database, dan UI/UX Design.
+            </p>
+
+            <div class="about-detail">
+
+                <p>
+                    <strong>Nama Lengkap :</strong>
+                    {{ profil.nama_lengkap if profil else 'Dewi Firda Amalia' }}
+                </p>
+
+                <p>
+                    <strong>Nama Panggilan :</strong>
+                    {{ profil.nama_panggilan if profil else 'Firda' }}
+                </p>
+
+                <p>
+                    <strong>Universitas :</strong>
+                    {{ profil.universitas if profil else 'Universitas Kristen Satya Wacana' }}
+                </p>
+
+                <p>
+                    <strong>Fakultas :</strong>
+                    {{ profil.fakultas if profil else 'Teknologi Informasi' }}
+                </p>
+
+                <p>
+                    <strong>Program Studi :</strong>
+                    {{ profil.program_studi if profil else 'Sistem Informasi' }}
+                </p>
+
+                <p>
+                    <strong>Email :</strong>
+                    {{ profil.email if profil else '682024014@student.uksw.edu' }}
+                </p>
+
+                <a href="#contact" class="btn-contact">
+                    Hubungi Saya
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+
+    <h2>PENGALAMAN</h2>
+
+    <div class="timeline">
+
+        {% for pengalaman in experiences %}
+
+        <div class="timeline-item">
+
+            <h3>{{ pengalaman.jabatan }}</h3>
+
+            <p>
+                <strong>{{ pengalaman.instansi }}</strong> <br>
+                {{ pengalaman.deskripsi }}
+            </p>
+
+            <span>{{ pengalaman.tahun }}</span>
+
+        </div>
+
+        {% else %}
+
+        <p style="text-align:center;">
+            Belum ada data pengalaman.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+
+    <h2>Skills</h2>
+
+    <div class="skill-container">
+
+        {% for skill in skills %}
+
+        <div class="skill-card">
+
+            {% if skill.nama_skill|lower == 'java' %}
+
+                <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png"
+                     alt="Java">
+
+            {% elif skill.nama_skill|lower == 'python' %}
+
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png"
+                     alt="Python">
+
+            {% elif skill.nama_skill|lower == 'mysql' %}
+
+                <img src="https://cdn-icons-png.flaticon.com/512/919/919836.png"
+                     alt="MySQL">
+
+            {% else %}
+
+                <div class="skill-default-icon">
+                    💻
+                </div>
+
+            {% endif %}
+
+            <h3>{{ skill.nama_skill }}</h3>
+
+            <div class="skill-bar">
+                <div class="skill-fill"
+                     style="width: {{ skill.persentase }}%;">
+                </div>
+            </div>
+
+            <span class="percent">
+                {{ skill.persentase }}%
+            </span>
+
+        </div>
+
+        {% else %}
+
+        <p>Belum ada data skill.</p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- PROJECT -->
+<section id="projects">
+
+    <h2>PROJECT</h2>
+
+    {% for project in projects %}
+
+    <div class="project-card">
+
+        {% if project.gambar %}
+
+            <img src="{{ project.gambar }}"
+                 alt="{{ project.nama_proyek }}"
+                 class="project-img">
+
+        {% else %}
+
+            <div class="project-icon">
+                📚
+            </div>
+
+        {% endif %}
+
+        <h3>{{ project.nama_proyek }}</h3>
+
+        <p>
+            {{ project.deskripsi }}
+        </p>
+
+        <div class="tech">
+
+            {% if project.teknologi %}
+
+                {% for tech in project.teknologi.split(',') %}
+
+                    <span>{{ tech.strip() }}</span>
+
+                {% endfor %}
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% else %}
+
+    <p style="text-align:center;">
+        Belum ada data proyek.
+    </p>
+
+    {% endfor %}
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+
+    <h2>CONTACT</h2>
+
+    <form method="POST" action="{{ url_for('contact') }}">
+
+        <input type="text"
+            name="nama"
+            placeholder="Nama"
+            required>
+
+        <input type="email"
+            name="email"
+            placeholder="Email"
+            required>
+
+        <textarea name="pesan"
+                rows="5"
+                placeholder="Pesan"
+                required></textarea>
+
+        <button type="submit">
+            Kirim Pesan
+        </button>
+
+    </form>
+
+</section>
+
+<footer>
+    © 2026 Dewi Firda Amalia
+</footer>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

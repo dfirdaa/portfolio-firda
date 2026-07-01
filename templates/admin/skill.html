@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Skill</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="admin-dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2>🌸<br>Admin Panel</h2>
+
+        <a href="{{ url_for('admin') }}">Dashboard</a>
+        <a href="{{ url_for('admin_profil') }}">Profil</a>
+        <a href="{{ url_for('admin_skill') }}" class="active">Skill</a>
+        <a href="{{ url_for('admin_pengalaman') }}">Pengalaman</a>
+        <a href="{{ url_for('admin_proyek') }}">Proyek</a>
+        <a href="{{ url_for('admin_kontak') }}">Kontak</a>
+
+        <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="admin-content">
+
+        <div class="admin-header">
+
+            <div>
+                <h1>Kelola Skill</h1>
+                <p>Tambah dan tampilkan data skill dari TiDB.</p>
+            </div>
+
+            <div class="admin-profile">
+                <span>Firda Amalia</span>
+                <div class="admin-avatar">F</div>
+            </div>
+
+        </div>
+
+        <!-- FORM TAMBAH SKILL -->
+        <div class="admin-form-box">
+
+            <h2>Tambah Skill</h2>
+
+            <form method="POST" action="{{ url_for('admin_skill') }}">
+
+                <div class="form-group">
+                    <label>Nama Skill</label>
+
+                    <input type="text"
+                           name="nama_skill"
+                           placeholder="Contoh: Java"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Persentase</label>
+
+                    <input type="number"
+                           name="persentase"
+                           placeholder="Contoh: 85"
+                           min="0"
+                           max="100"
+                           required>
+                </div>
+
+                <button type="submit">
+                    Simpan Skill
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- TABEL SKILL -->
+        <div class="admin-table-box">
+
+            <h2>Daftar Skill</h2>
+
+            <table class="admin-table">
+
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Skill</th>
+                        <th>Persentase</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for skill in skills %}
+
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ skill.nama_skill }}</td>
+                        <td>{{ skill.persentase }}%</td>
+                        <td>
+                            <a href="{{ url_for('edit_skill', id=skill.id) }}"
+                            class="btn-edit-link">
+                                Edit
+                            </a>
+
+                            <form method="POST"
+                                action="{{ url_for('delete_skill', id=skill.id) }}"
+                                style="display:inline;"
+                                onsubmit="return confirm('Yakin ingin menghapus skill ini?');">
+
+                                <button type="submit" class="btn-delete">
+                                    Hapus
+                                </button>
+
+                            </form>
+                        </td>
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+                        <td colspan="4" style="text-align:center;">
+                            Belum ada data skill.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

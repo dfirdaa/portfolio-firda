@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff7fb;
+            color: #2d2d2d;
+        }
+
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(180deg, #f8c8dc, #f3a6c8);
+            padding: 40px 25px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 45px;
+            font-size: 28px;
+        }
+
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            color: #222;
+            padding: 17px 20px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: white;
+            color: #ff5fa2;
+        }
+
+        .logout {
+            margin-top: 35px;
+            background: white;
+            color: #ff5fa2 !important;
+            font-weight: bold;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 45px 40px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .top-bar p {
+            color: #777;
+        }
+
+        .admin-profile {
+            background: white;
+            padding: 12px 18px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .admin-profile span {
+            background: #f8c8dc;
+            color: #222;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 28px 25px;
+            border-radius: 22px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            text-decoration: none;
+            color: #222;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-box {
+            background: #fbd3df;
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .stat-card h3 {
+            margin: 0 0 7px;
+            font-size: 20px;
+        }
+
+        .stat-card p {
+            margin: 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .welcome-box {
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            margin-top: 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .welcome-box h2 {
+            color: #ff5fa2;
+            font-size: 28px;
+        }
+
+        .menu-title {
+            margin-top: 40px;
+            font-size: 30px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .menu-card {
+            background: white;
+            padding: 28px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #222;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-card h3 {
+            color: #ff5fa2;
+            margin-bottom: 12px;
+        }
+
+        .menu-card p {
+            color: #555;
+        }
+
+        @media (max-width: 900px) {
+            .admin-layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: auto;
+            }
+
+            .stat-grid,
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>🌸<br>Admin Panel</h2>
+
+            <a href="{{ url_for('admin') }}" class="active">Dashboard</a>
+            <a href="{{ url_for('admin_profil') }}">Profil</a>
+            <a href="{{ url_for('admin_skill') }}">Skill</a>
+            <a href="{{ url_for('admin_pengalaman') }}">Pengalaman</a>
+            <a href="{{ url_for('admin_proyek') }}">Proyek</a>
+            <a href="{{ url_for('admin_kontak') }}">Kontak</a>
+
+            <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <div class="top-bar">
+                <div>
+                    <h1>Dashboard Admin</h1>
+                    <p>Selamat datang di halaman pengelolaan portfolio.</p>
+                </div>
+
+                <div class="admin-profile">
+                    <p>Firda Amalia</p>
+                    <span>F</span>
+                </div>
+            </div>
+
+            <!-- Kartu Atas -->
+            <div class="stat-grid">
+                <a href="{{ url_for('admin_profil') }}" class="stat-card">
+                    <div class="icon-box">👤</div>
+                    <div>
+                        <h3>Profil</h3>
+                        <p>Kelola data diri</p>
+                    </div>
+                </a>
+
+                <a href="{{ url_for('admin_skill') }}" class="stat-card">
+                    <div class="icon-box">💻</div>
+                    <div>
+                        <h3>Skill</h3>
+                        <p>Java, Python, MySQL</p>
+                    </div>
+                </a>
+
+                <a href="{{ url_for('admin_pengalaman') }}" class="stat-card">
+                    <div class="icon-box">🎓</div>
+                    <div>
+                        <h3>Pengalaman</h3>
+                        <p>Pendidikan & organisasi</p>
+                    </div>
+                </a>
+
+                <a href="{{ url_for('admin_proyek') }}" class="stat-card">
+                    <div class="icon-box">🖼️</div>
+                    <div>
+                        <h3>Proyek</h3>
+                        <p>Sistem Perpustakaan</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Welcome Box -->
+            <div class="welcome-box">
+                <h2>🌷 Portfolio Firda Amalia</h2>
+                <p>
+                    Melalui dashboard ini, admin dapat mengelola data portfolio seperti profil,
+                    skill, pengalaman, proyek, dan pesan kontak.
+                </p>
+            </div>
+
+            <!-- Menu Pengelolaan -->
+            <h2 class="menu-title">Menu Pengelolaan</h2>
+
+            <div class="menu-grid">
+                <a href="{{ url_for('admin_profil') }}" class="menu-card">
+                    <h3>Profil</h3>
+                    <p>Edit informasi profil dan foto.</p>
+                </a>
+
+                <a href="{{ url_for('admin_skill') }}" class="menu-card">
+                    <h3>Skill</h3>
+                    <p>Tambah, edit, atau hapus skill.</p>
+                </a>
+
+                <a href="{{ url_for('admin_pengalaman') }}" class="menu-card">
+                    <h3>Pengalaman</h3>
+                    <p>Kelola pendidikan dan pengalaman organisasi.</p>
+                </a>
+
+                <a href="{{ url_for('admin_proyek') }}" class="menu-card">
+                    <h3>Proyek</h3>
+                    <p>Kelola project portfolio.</p>
+                </a>
+
+                <a href="{{ url_for('admin_kontak') }}" class="menu-card">
+                    <h3>Kontak</h3>
+                    <p>Lihat pesan dari pengunjung.</p>
+                </a>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>

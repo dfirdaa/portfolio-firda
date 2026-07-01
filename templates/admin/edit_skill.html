@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Skill</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="admin-dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+
+        <div class="admin-logo">
+            🌸
+            <h2>Admin Panel</h2>
+        </div>
+
+        <ul class="admin-menu">
+
+            <li>
+                <a href="{{ url_for('admin') }}">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_profil') }}">Profil</a>
+            </li>
+
+            <li class="active">
+                <a href="{{ url_for('admin_skill') }}">
+                    Skill
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_pengalaman') }}">Pengalaman</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_proyek') }}">
+                    Proyek
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_kontak') }}">Kontak</a>
+            </li>
+
+            <li class="logout">
+                <a href="{{ url_for('logout') }}">
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="admin-content">
+
+        <div class="admin-header">
+
+            <div>
+                <h1>Edit Skill</h1>
+                <p>Ubah data skill yang tersimpan di TiDB.</p>
+            </div>
+
+            <div class="admin-profile">
+                <span>Firda Amalia</span>
+                <div class="admin-avatar">F</div>
+            </div>
+
+        </div>
+
+        <div class="admin-form-box">
+
+            <h2>Form Edit Skill</h2>
+
+            <form method="POST"
+                  action="{{ url_for('edit_skill', id=skill.id) }}">
+
+                <div class="form-group">
+                    <label>Nama Skill</label>
+
+                    <input type="text"
+                           name="nama_skill"
+                           value="{{ skill.nama_skill }}"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Persentase</label>
+
+                    <input type="number"
+                           name="persentase"
+                           value="{{ skill.persentase }}"
+                           min="0"
+                           max="100"
+                           required>
+                </div>
+
+                <button type="submit">
+                    Simpan Perubahan
+                </button>
+
+                <a href="{{ url_for('admin_skill') }}"
+                   class="btn-back">
+                    Kembali
+                </a>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Kontak</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="admin-dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+
+        <div class="admin-logo">
+            🌸
+            <h2>Admin Panel</h2>
+        </div>
+
+        <ul class="admin-menu">
+
+            <li>
+                <a href="{{ url_for('admin') }}">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_profil') }}">Profil</a>
+
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_skill') }}">
+                    Skill
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_pengalaman') }}">Pengalaman</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_proyek') }}">Proyek</a>
+            </li>
+
+            <li class="active">
+                <a href="{{ url_for('admin_kontak') }}">
+                    Kontak
+                </a>
+            </li>
+
+            <li class="logout">
+                <a href="{{ url_for('logout') }}">
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="admin-content">
+
+        <div class="admin-header">
+
+            <div>
+                <h1>Pesan Kontak</h1>
+                <p>Daftar pesan yang dikirim pengunjung portfolio.</p>
+            </div>
+
+            <div class="admin-profile">
+                <span>Firda Amalia</span>
+                <div class="admin-avatar">F</div>
+            </div>
+
+        </div>
+
+        <div class="admin-table-box">
+
+            <h2>Daftar Pesan</h2>
+
+            <table class="admin-table">
+
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Pesan</th>
+                        <th>Tanggal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for pesan in kontak %}
+
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ pesan.nama }}</td>
+                        <td>{{ pesan.email }}</td>
+                        <td>{{ pesan.pesan }}</td>
+                        <td>{{ pesan.tanggal }}</td>
+                        <td>
+                            <form method="POST"
+                                  action="{{ url_for('delete_kontak', id=pesan.id) }}"
+                                  onsubmit="return confirm('Yakin ingin menghapus pesan ini?');">
+
+                                <button type="submit" class="btn-delete">
+                                    Hapus
+                                </button>
+
+                            </form>
+                        </td>
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+                        <td colspan="6" style="text-align:center;">
+                            Belum ada pesan masuk.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

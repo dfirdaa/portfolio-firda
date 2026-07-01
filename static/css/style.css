@@ -1,0 +1,1028 @@
+/* =========================================================
+   RESET DASAR WEBSITE
+   Menghapus margin/padding default browser dan menyamakan font
+========================================================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fff;
+    color:#444;
+}
+
+
+/* =========================================================
+   NAVBAR HALAMAN UTAMA
+   Bagian menu atas: Home, About, Experience, Skills, Projects, Contact, Login
+========================================================= */
+nav{
+    background:#f8c8dc;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 50px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#444;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:#ff69b4;
+}
+
+
+/* =========================================================
+   HERO / HOME SECTION
+   Bagian awal halaman utama portfolio
+========================================================= */
+.hero{
+    min-height:90vh;
+    background:linear-gradient(
+        180deg,
+        #fadadd,
+        #ffffff
+    );
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero .welcome{
+    font-size:18px;
+    color:#ff69b4;
+    font-weight:600;
+    letter-spacing:2px;
+    margin-bottom:15px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:20px;
+    color:#333;
+}
+
+.hero .desc{
+    font-size:20px;
+    line-height:1.8;
+    color:#555;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#f8c8dc;
+    color:#444;
+    padding:14px 35px;
+    border-radius:40px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#ffb6c1;
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   SECTION UMUM
+   Digunakan untuk jarak antar bagian halaman utama
+========================================================= */
+section{
+    padding:80px;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:35px;
+    font-size:35px;
+}
+
+
+/* =========================================================
+   ABOUT SECTION
+   Bagian profil diri di halaman utama
+========================================================= */
+.about-text{
+    text-align:center;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.about-container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.about-info{
+    max-width:600px;
+}
+
+.about-info h3{
+    text-align:center;
+    font-size:28px;
+    color:#ff69b4;
+    margin-bottom:15px;
+}
+
+.about-info p{
+    line-height:1.8;
+    margin-bottom:10px;
+}
+
+.about-detail{
+    margin-top:20px;
+    background:#fff5f8;
+    padding:20px;
+    border-radius:15px;
+}
+
+.about-container.no-photo{
+    justify-content:center;
+}
+
+.about-container.no-photo .about-info{
+    max-width:800px;
+    text-align:left;
+}
+
+
+/* Foto profil pada halaman utama About */
+.about-photo img{
+    width:220px !important;
+    height:220px !important;
+    object-fit:cover;
+    border-radius:50%;
+    border:8px solid #f8c8dc;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.photo-name {
+    margin-top: 20px;
+    text-align: center;
+    color: #ff5fa2;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.photo-role {
+    text-align: center;
+    color: #444;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+
+/* Tombol Hubungi Saya di About */
+.btn-contact{
+    display:inline-block;
+    margin-top:20px;
+    background:#f8c8dc;
+    color:#444;
+    text-decoration:none;
+    padding:12px 25px;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn-contact:hover{
+    background:#ffb6c1;
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   CARD UMUM
+   Digunakan jika ada kartu tambahan pada halaman utama
+========================================================= */
+.card-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.card{
+    width:220px;
+    padding:25px;
+    background:#fadadd;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+
+/* =========================================================
+   FORM UMUM
+   Digunakan untuk form contact dan beberapa input umum
+========================================================= */
+form{
+    max-width:600px;
+    margin:auto;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+button{
+    background:#f8c8dc;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ffb6c1;
+}
+
+
+/* =========================================================
+   FOOTER
+   Bagian bawah halaman utama
+========================================================= */
+footer{
+    background:#f8c8dc;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+
+
+/* =========================================================
+   LOGIN ADMIN
+   Tampilan halaman login admin
+========================================================= */
+.login-container{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        180deg,
+        #fadadd,
+        #ffffff
+    );
+}
+
+.login-box{
+    width:400px;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.login-box h2{
+    margin-bottom:25px;
+}
+
+.login-box input{
+    margin-bottom:15px;
+}
+
+.login-box a{
+    display:block;
+    margin-top:15px;
+    text-decoration:none;
+    color:#ff69b4;
+}
+
+
+/* =========================================================
+   DASHBOARD SEDERHANA
+   Style lama untuk layout dashboard jika digunakan
+========================================================= */
+.dashboard{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:250px;
+    background:#f8c8dc;
+    padding:30px;
+}
+
+.sidebar ul{
+    list-style:none;
+    margin-top:20px;
+}
+
+.sidebar li{
+    padding:15px 0;
+    cursor:pointer;
+}
+
+.sidebar li:hover{
+    color:white;
+}
+
+.content{
+    flex:1;
+    padding:40px;
+}
+
+
+/* Link sidebar pada beberapa halaman admin */
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: #222;
+    padding: 17px 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: white;
+    color: #ff5fa2;
+}
+
+
+/* =========================================================
+   SKILLS SECTION
+   Bagian skill pada halaman utama
+========================================================= */
+.skill-container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.skill-card{
+    width:250px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.skill-card:hover{
+    transform:translateY(-8px);
+}
+
+.skill-card img{
+    width:80px;
+    height:80px;
+    margin-bottom:15px;
+}
+
+.skill-default-icon{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.skill-card h3{
+    color:#ff69b4;
+    margin-bottom:15px;
+}
+
+.skill-bar{
+    width:100%;
+    height:12px;
+    background:#f3dbe5;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.skill-fill{
+    height:100%;
+    background:#ff69b4;
+    border-radius:20px;
+}
+
+.percent{
+    display:block;
+    margin-top:10px;
+    font-weight:bold;
+    color:#ff69b4;
+}
+
+
+/* =========================================================
+   PROJECT SECTION
+   Bagian proyek pada halaman utama
+========================================================= */
+.project-card{
+    max-width:800px;
+    margin:auto;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.project-icon{
+    font-size:70px;
+    margin-bottom:20px;
+}
+
+.project-img{
+    width:100%;
+    max-height:260px;
+    object-fit:cover;
+    border-radius:18px;
+    margin-bottom:20px;
+}
+
+.project-card h3{
+    font-size:28px;
+    margin-bottom:15px;
+    color:#333;
+}
+
+.project-card p{
+    line-height:1.8;
+    margin-bottom:25px;
+    color:#555;
+}
+
+.tech{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.tech span{
+    background:#fadadd;
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:600;
+}
+
+
+/* =========================================================
+   EXPERIENCE / PENGALAMAN SECTION
+   Bagian pengalaman di halaman utama
+========================================================= */
+.timeline{
+    max-width:800px;
+    margin:auto;
+}
+
+.timeline-item{
+    background:white;
+    padding:25px;
+    margin-bottom:20px;
+    border-left:6px solid #f8c8dc;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.timeline-item h3{
+    color:#ff69b4;
+    margin-bottom:10px;
+}
+
+.timeline-item p{
+    line-height:1.8;
+}
+
+.timeline-item span{
+    display:block;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   ADMIN DASHBOARD MODERN
+   Layout utama halaman admin: profil, skill, pengalaman, proyek, kontak
+========================================================= */
+.admin-dashboard{
+    display:flex;
+    min-height:100vh;
+    background:#fff7fa;
+}
+
+
+/* Sidebar admin modern */
+.admin-sidebar{
+    width:280px;
+    background:linear-gradient(
+        180deg,
+        #f8c8dc,
+        #f4b6cf
+    );
+    padding:35px 25px;
+    box-shadow:4px 0 15px rgba(0,0,0,0.08);
+}
+
+.admin-logo{
+    text-align:center;
+    margin-bottom:45px;
+    font-size:35px;
+}
+
+.admin-logo h2{
+    font-size:28px;
+    margin-top:10px;
+    color:#333;
+}
+
+.admin-menu{
+    list-style:none;
+}
+
+.admin-menu li{
+    margin-bottom:12px;
+}
+
+.admin-menu li a{
+    display:block;
+    text-decoration:none;
+    color:#333;
+    padding:14px 18px;
+    border-radius:15px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.admin-menu li a:hover,
+.admin-menu .active a{
+    background:white;
+    color:#ff69b4;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.admin-menu .logout a{
+    margin-top:30px;
+    background:#fff;
+    color:#ff4f8b;
+}
+
+
+/* =========================================================
+   ADMIN CONTENT
+   Bagian isi kanan pada halaman admin
+========================================================= */
+.admin-content{
+    flex:1;
+    padding:40px;
+}
+
+
+/* Header halaman admin */
+.admin-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.admin-header h1{
+    font-size:36px;
+    color:#333;
+}
+
+.admin-header p{
+    color:#777;
+    margin-top:8px;
+}
+
+
+/* Profil kecil kanan atas admin */
+.admin-profile{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:white;
+    padding:10px 18px;
+    border-radius:30px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.admin-avatar{
+    width:40px;
+    height:40px;
+    background:#f8c8dc;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    color:#333;
+}
+
+
+/* =========================================================
+   ADMIN CARD
+   Kartu ringkasan pada dashboard admin jika digunakan
+========================================================= */
+.admin-card-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+    gap:25px;
+    margin-bottom:35px;
+}
+
+.admin-card{
+    background:white;
+    padding:25px;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.admin-card:hover{
+    transform:translateY(-6px);
+}
+
+.admin-card-icon{
+    width:60px;
+    height:60px;
+    background:#fadadd;
+    border-radius:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+}
+
+.admin-card h3{
+    color:#333;
+    margin-bottom:6px;
+}
+
+.admin-card p{
+    color:#777;
+    font-size:14px;
+}
+
+
+/* =========================================================
+   ADMIN WELCOME BOX
+   Kotak sambutan di dashboard admin jika digunakan
+========================================================= */
+.admin-welcome{
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    margin-bottom:35px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.admin-welcome h2{
+    text-align:left;
+    color:#ff69b4;
+    margin-bottom:15px;
+    font-size:28px;
+}
+
+.admin-welcome p{
+    line-height:1.8;
+    color:#555;
+}
+
+
+/* =========================================================
+   QUICK MENU ADMIN
+   Menu cepat pada dashboard admin jika digunakan
+========================================================= */
+.quick-section h2{
+    text-align:left;
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+.quick-menu{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:20px;
+}
+
+.quick-item{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.quick-item:hover{
+    transform:translateY(-5px);
+}
+
+.quick-item h3{
+    color:#ff69b4;
+    margin-bottom:10px;
+}
+
+.quick-item p{
+    color:#666;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   ADMIN FORM DAN TABLE
+   Digunakan pada kelola profil, skill, pengalaman, proyek, kontak
+========================================================= */
+.admin-form-box,
+.admin-table-box{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    margin-bottom:30px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.admin-form-box h2,
+.admin-table-box h2{
+    text-align:left;
+    color:#ff69b4;
+    margin-bottom:20px;
+    font-size:26px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#444;
+}
+
+.form-group input{
+    width:100%;
+    padding:14px;
+    border:1px solid #eee;
+    border-radius:12px;
+    outline:none;
+}
+
+.form-group input:focus{
+    border-color:#f8c8dc;
+}
+
+.form-group textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #eee;
+    border-radius:12px;
+    outline:none;
+    resize:vertical;
+    font-family:inherit;
+}
+
+.form-group textarea:focus{
+    border-color:#f8c8dc;
+}
+
+.admin-form-box button{
+    background:#f8c8dc;
+    color:#333;
+    border:none;
+    padding:13px 25px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.admin-form-box button:hover{
+    background:#ffb6c1;
+    transform:translateY(-3px);
+}
+
+
+/* Tabel admin */
+.admin-table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+}
+
+.admin-table th{
+    background:#f8c8dc;
+    padding:15px;
+    text-align:left;
+    color:#333;
+}
+
+.admin-table td{
+    padding:15px;
+    border-bottom:1px solid #eee;
+}
+
+.admin-table tr:hover{
+    background:#fff7fa;
+}
+
+
+/* =========================================================
+   TOMBOL ADMIN
+   Tombol edit, hapus, dan kembali
+========================================================= */
+.btn-edit{
+    background:#fadadd;
+    border:none;
+    padding:8px 15px;
+    border-radius:20px;
+    cursor:pointer;
+    margin-right:5px;
+}
+
+.btn-delete{
+    background:#ffb6c1;
+    border:none;
+    padding:8px 15px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.btn-edit:hover,
+.btn-delete:hover{
+    opacity:0.8;
+}
+
+.btn-edit-link{
+    display:inline-block;
+    background:#fadadd;
+    color:#333;
+    text-decoration:none;
+    padding:8px 15px;
+    border-radius:20px;
+    margin-right:5px;
+    font-size:14px;
+}
+
+.btn-edit-link:hover{
+    background:#ffb6c1;
+}
+
+.btn-back{
+    display:inline-block;
+    margin-left:10px;
+    text-decoration:none;
+    background:#eee;
+    color:#333;
+    padding:13px 25px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+.btn-back:hover{
+    background:#ddd;
+}
+
+
+/* =========================================================
+   PREVIEW FOTO ADMIN
+   Tampilan preview foto profil pada halaman Kelola Profil
+========================================================= */
+.preview-box{
+    margin-top:15px;
+}
+
+.preview-box p{
+    margin-bottom:10px;
+    font-weight:600;
+    color:#555;
+}
+
+.admin-preview-img{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    border-radius:50%;
+    border:6px solid #f8c8dc;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+
+/* =========================================================
+   JAVASCRIPT EFFECT
+   Digunakan oleh static/js/script.js untuk animasi scroll
+========================================================= */
+.hidden-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.6s ease;
+}
+
+.show-section {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+nav ul li a.active-link {
+    color: #ff69b4;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   RESPONSIVE SEDERHANA
+   Agar tampilan lebih aman di layar kecil
+========================================================= */
+@media (max-width: 900px){
+    nav{
+        flex-direction:column;
+        gap:15px;
+        padding:18px 20px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+    }
+
+    section{
+        padding:50px 25px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero .desc{
+        font-size:18px;
+    }
+
+    .admin-dashboard{
+        flex-direction:column;
+    }
+
+    .admin-sidebar,
+    .sidebar{
+        width:100%;
+    }
+
+    .admin-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .admin-table{
+        font-size:14px;
+    }
+}
